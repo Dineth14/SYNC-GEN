@@ -5,13 +5,22 @@
 %% ── SIMULINK MODEL DESCRIPTION ────────────────────────────────────────────
 \subsection{Simulink Model}
 
-The Simulink model used for Exercise~1 comprises a \MVA{555} round-rotor
-synchronous machine connected to a resistive-inductive load via a three-phase
-bus. The AVR (AC1C exciter) regulates the terminal voltage, and the
-governor--turbine subsystem controls the mechanical power input. Two
-relay-controlled breakers implement the load step events at $t = \SI{3}{s}$
-(step off) and $t = \SI{9}{s}$ (step on). Measurement blocks capture $V_t$,
-$\omega$, $P$, $Q$, and $I_f$ for post-processing.
+\figref{fig:ex1_diagram} shows the complete Simulink model used for Exercise~1.
+The model comprises a \MVA{555} round-rotor synchronous machine connected to a
+resistive-inductive load via a three-phase bus. The AVR (AC1C exciter) regulates
+the terminal voltage, and the governor--turbine subsystem controls the
+mechanical power input. Two relay-controlled breakers implement the load step
+events at $t = \SI{3}{s}$ (step off) and $t = \SI{9}{s}$ (step on).
+Measurement blocks capture $V_t$, $\omega$, $P$, $Q$, and $I_f$ for
+post-processing.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{EX1_figure.png}
+  \caption{Exercise 1 Simulink model: single synchronous machine with AVR,
+    governor, and switched loads.}
+  \label{fig:ex1_diagram}
+\end{figure}
 
 %% ── TASK 1 ────────────────────────────────────────────────────────────────
 \subsection{Task 1 -- Properties and Functionality of Simulation Components}
@@ -84,6 +93,14 @@ feedback control subsystem maintaining the generator terminal voltage at the
 reference value ($V_\text{ref} = \pu{1.0}$). The exciter model is the
 AC1C~type, which represents an alternator-rectifier excitation system with
 field-current-based feedback.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\textwidth]{AVR_exiter.png}
+  \caption{AVR and exciter (AC1C) block diagram showing the closed-loop
+    voltage regulation subsystem.}
+  \label{fig:avr_exciter}
+\end{figure}
 
 The AVR senses the terminal voltage $V_t$, compares it with $V_\text{ref}$,
 and produces an error signal that drives the exciter to adjust the field
