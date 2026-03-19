@@ -1,0 +1,133 @@
+%% =========================================================================
+%%  EE354 – Synchronous Generators Assignment
+%%  MODULAR MAIN FILE — includes sections from sections/ subfolder
+
+\documentclass[12pt, a4paper]{article}
+
+%% ── PACKAGES ──────────────────────────────────────────────────────────────
+\usepackage[a4paper, top=25mm, bottom=25mm, left=25mm, right=25mm]{geometry}
+\usepackage{amsmath}          % Mathematics
+\usepackage{amssymb}          % Math symbols
+\usepackage{graphicx}         % Images
+\usepackage{float}            % Figure placement [H]
+\usepackage{caption}          % Caption formatting
+\usepackage{subcaption}       % Subfigures
+\usepackage{booktabs}         % Professional tables
+\usepackage{array}            % Table column types
+\usepackage{multirow}         % Multi-row table cells
+\usepackage{xcolor}           % Colours
+\usepackage{hyperref}         % Clickable links and TOC
+\usepackage{fancyhdr}         % Headers and footers
+\usepackage{titlesec}         % Section title formatting
+\usepackage{setspace}         % Line spacing
+\usepackage{parskip}          % Paragraph spacing
+\usepackage{enumitem}         % List formatting
+\usepackage{cite}             % Citations
+\usepackage{url}              % URLs
+\usepackage{microtype}        % Better text justification
+\usepackage{siunitx}          % SI units
+\usepackage{tikz}             % Diagrams (optional)
+\usepackage{pgfplots}         % Plots (optional)
+\pgfplotsset{compat=1.18}
+
+%% ── GRAPHICS PATH ─────────────────────────────────────────────────────────
+\graphicspath{{figures/}}
+
+%% ── COLOUR DEFINITIONS ────────────────────────────────────────────────────
+\definecolor{navyblue}{RGB}{31, 78, 121}
+\definecolor{midblue}{RGB}{46, 117, 182}
+\definecolor{lightblue}{RGB}{214, 228, 240}
+\definecolor{darkgray}{RGB}{64, 64, 64}
+\definecolor{lightgray}{RGB}{245, 245, 245}
+\definecolor{accentred}{RGB}{192, 0, 0}
+
+%% ── HYPERREF SETUP ────────────────────────────────────────────────────────
+\hypersetup{
+    colorlinks   = true,
+    linkcolor    = navyblue,
+    citecolor    = navyblue,
+    urlcolor     = midblue,
+    pdftitle     = {EE354 Synchronous Generators Assignment},
+    pdfauthor    = {Student},
+    pdfsubject   = {Electrical Engineering},
+}
+
+%% ── SECTION FORMATTING ────────────────────────────────────────────────────
+\titleformat{\section}
+  {\Large\bfseries\color{navyblue}}
+  {\thesection}{1em}{}
+  [\color{midblue}\titlerule]
+
+\titleformat{\subsection}
+  {\large\bfseries\color{midblue}}
+  {\thesubsection}{1em}{}
+
+\titleformat{\subsubsection}
+  {\normalsize\bfseries\color{darkgray}}
+  {\thesubsubsection}{1em}{}
+
+%% ── HEADER / FOOTER ───────────────────────────────────────────────────────
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\fancyhead[L]{\small\color{midblue}\textbf{EE354 -- Synchronous Generators Assignment}}
+\fancyhead[R]{\small\color{darkgray}Comprehensive Simulation Report}
+\fancyfoot[C]{\small\color{darkgray}Page \thepage}
+\fancyfoot[R]{\small\color{darkgray}MATLAB R2025b $|$ Simscape Electrical}
+
+%% ── CAPTION FORMATTING ────────────────────────────────────────────────────
+\captionsetup{
+    font       = small,
+    labelfont  = {bf, color=navyblue},
+    labelsep   = period,
+    skip       = 6pt,
+}
+
+%% ── LINE SPACING ──────────────────────────────────────────────────────────
+\setstretch{1.15}
+
+%% ── EQUATION NUMBERING ────────────────────────────────────────────────────
+\numberwithin{equation}{section}
+
+%% ── CUSTOM COMMANDS ───────────────────────────────────────────────────────
+\newcommand{\pu}[1]{#1\,\text{pu}}          % per-unit value
+\newcommand{\MVA}[1]{#1\,\text{MVA}}        % MVA
+\newcommand{\MW}[1]{#1\,\text{MW}}          % MW
+\newcommand{\MVAr}[1]{#1\,\text{MVAr}}      % MVAr
+\newcommand{\kV}[1]{#1\,\text{kV}}          % kV
+\newcommand{\Hz}[1]{#1\,\text{Hz}}          % Hz
+\newcommand{\param}[1]{\texttt{#1}}         % parameter names
+\newcommand{\figref}[1]{Figure~\ref{#1}}    % figure reference
+\newcommand{\eqnref}[1]{(\ref{#1})}         % equation reference
+\newcommand{\tabref}[1]{Table~\ref{#1}}     % table reference
+
+%% =========================================================================
+\begin{document}
+%% =========================================================================
+
+%% ── TITLE PAGE ────────────────────────────────────────────────────────────
+\input{sections/titlepage}
+
+%% ── TABLE OF CONTENTS ─────────────────────────────────────────────────────
+\tableofcontents
+\newpage
+
+%% ── MAIN SECTIONS ─────────────────────────────────────────────────────────
+\input{sections/introduction}
+
+\input{sections/exercise1}
+
+\input{sections/exercise2}
+
+\input{sections/exercise3}
+
+\input{sections/conclusion}
+
+%% ── REFERENCES ────────────────────────────────────────────────────────────
+\input{sections/references}
+
+%% ── APPENDICES ────────────────────────────────────────────────────────────
+\input{sections/appendix}
+
+\end{document}

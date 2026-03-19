@@ -1,0 +1,89 @@
+%% =========================================================================
+\newpage
+\appendix
+\section{Governing Equations Summary}
+%% =========================================================================
+
+\tabref{tab:equations} provides a consolidated reference for all key equations
+used in this report.
+
+\begin{table}[H]
+  \centering
+  \caption{Consolidated Governing Equations}
+  \label{tab:equations}
+  \begin{tabular}{>{\bfseries}l l l}
+    \toprule
+    \textbf{Equation} & \textbf{Formula} & \textbf{Ref.} \\
+    \midrule
+    Active power transfer
+      & $P \approx \dfrac{EV}{X}\sin\delta$
+      & \eqnref{eq:active_power} \\[10pt]
+    Reactive power transfer
+      & $Q \approx \dfrac{V}{X}(E\cos\delta - V)$
+      & \eqnref{eq:reactive_power} \\[10pt]
+    AVR control
+      & $E_\text{fd}(s) = \dfrac{K_A}{1+sT_A}(V_\text{ref}-V_t)$
+      & \eqnref{eq:avr} \\[10pt]
+    Governor droop (definition)
+      & $R = \dfrac{\Delta f/f_r}{\Delta P/P_r}$
+      & \eqnref{eq:droop_def} \\[10pt]
+    Governor droop (power)
+      & $P = \dfrac{f_{nl}-f_\text{sys}}{S_P}$
+      & \eqnref{eq:droop_power} \\[10pt]
+    Inertia constant
+      & $H = \dfrac{\frac{1}{2}J\omega_s^2}{S_\text{rated}}$
+      & \eqnref{eq:inertia_constant} \\[10pt]
+    Swing equation
+      & $\dfrac{2H}{\omega_s}\dfrac{d\omega}{dt} = P_m - P_e - D(\omega-\omega_s)$
+      & \eqnref{eq:swing} \\[10pt]
+    ROCOF
+      & $\left.\dfrac{df}{dt}\right|_0 = -\dfrac{f_s}{2H}\cdot\dfrac{\Delta P}{S}$
+      & \eqnref{eq:rocof} \\[10pt]
+    Synchronising power
+      & $P_\text{sync} = \dfrac{|V_1||V_2|}{X_s}\sin(\delta_1-\delta_2)$
+      & \eqnref{eq:sync_power} \\[10pt]
+    Combined droop
+      & $\Delta P_L = -\!\left(\dfrac{1}{R_1}+\dfrac{1}{R_2}\right)\!\Delta f$
+      & \eqnref{eq:combined_droop} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+%% =========================================================================
+\section{Simulation Parameters Quick Reference}
+%% =========================================================================
+
+\begin{table}[H]
+  \centering
+  \caption{Key Simulation Parameter Summary}
+  \label{tab:sim_params}
+  \begin{tabular}{l l l l}
+    \toprule
+    \textbf{Exercise} & \textbf{Task} & \textbf{Parameter} & \textbf{Value} \\
+    \midrule
+    \multirow{5}{*}{Exercise 1}
+      & \multirow{5}{*}{Tasks 1--2}
+      & Initial load & \MW{250}, \MVAr{15} \\
+    & & Load step OFF time & $t = \SI{3}{s}$ \\
+    & & Load step ON time  & $t = \SI{9}{s}$ \\
+    & & Gen governor ref   & \pu{0.998} \\
+    & & Simulation time    & \SI{15}{s} \\
+    \midrule
+    \multirow{3}{*}{Exercise 2}
+      & Task 3
+      & Gen~B speed ref & \textbf{\pu{0.98}} \\
+    & Task 4
+      & Gen~B speed ref & \textbf{\pu{1.01}} \\
+    & Both
+      & Sync breaker closes & $t = \SI{5}{s}$ \\
+    \midrule
+    \multirow{4}{*}{Exercise 3}
+      & \multirow{2}{*}{Task 5}
+      & Gen~B speed ref & \textbf{\pu{0.98}} \\
+    & & Infinite bus $f$ & \pu{1.000} (fixed) \\
+    & \multirow{2}{*}{Task 6}
+      & Gen~B speed ref & \textbf{\pu{1.01}} \\
+    & & Infinite bus $f$ & \pu{1.000} (fixed) \\
+    \bottomrule
+  \end{tabular}
+\end{table}

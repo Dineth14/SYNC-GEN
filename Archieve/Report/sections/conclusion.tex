@@ -1,0 +1,38 @@
+%% =========================================================================
+\section{Conclusion}
+%% =========================================================================
+
+This investigation has comprehensively demonstrated the dynamic behaviour of
+synchronous generators under three scenarios of increasing complexity through
+MATLAB R2025b / Simscape Electrical simulation, verified against governing
+equations from power systems theory.
+
+\textbf{Exercise~1} established the two fundamental coupled control mechanisms
+of a synchronous machine: the swing-equation/governor loop coupling active power
+to frequency, and the Q-equation/AVR loop coupling reactive power to terminal
+voltage. The \MVA{555} machine exhibited robust AVR action, recovering from a
+severe \pu{0.82} voltage dip within 3--4 seconds, and governor-controlled
+frequency settling at droop-governed steady-state values precisely as predicted
+by \eqnref{eq:droop_calc_3s}.
+
+\textbf{Exercise~2} demonstrated that the governor frequency setpoint is the
+sole determinant of load sharing in parallel operation. An under-frequency
+oncoming machine (Task~3) draws power from the system --- a hazardous motoring
+condition that can overload the running generator. An over-frequency machine
+(Task~4) assumes the majority of the system load --- the desired operational
+outcome. In both cases, the system frequency settled at a droop-weighted
+average of the two setpoints, confirming \eqnref{eq:combined_droop}.
+
+\textbf{Exercise~3} revealed the fundamental distinction between finite and
+infinite bus behaviour. Connected to an infinite bus, Generator~B loses all
+ability to influence system frequency. Its active power is set by its governor
+setpoint relative to the immovable grid frequency, resulting in a more severe
+motoring condition in Task~5 and a clean power injection in Task~6. This models
+the real-world scenario of a small generator connecting to a national grid ---
+the grid's frequency is determined by millions of megawatts of inertia, and a
+single machine has negligible influence on it.
+
+Together, the three exercises provide an integrated understanding of synchronous
+machine control from the fundamentals of the swing equation to the practical
+implications of grid connection --- the essential knowledge base for a power
+systems engineer.
