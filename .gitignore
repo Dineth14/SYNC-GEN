@@ -1,0 +1,44 @@
+# Auto-save and temporary files
+*.asv
+*.bak
+*~
+
+# Compiled MEX files
+*.mex*
+*.o
+
+# Simulink build artifacts
+slprj/
+*.slxc
+.SimulinkProject/
+
+# Code generation outputs
+codegen/
+slprj/
+
+# Generated results and plots (local only, not tracked)
+EE354_Plots/
+Data/
+*.mat
+
+# MATLAB external interfaces
+*.egg-info/
+__pycache__/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+.AppleDouble
+.LSOverride
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# But DO include:
+!scripts/*.m
+!models/*.slx
+!models/**/*.slx
+!docs/*.md

@@ -1,0 +1,25 @@
+%% =========================================================================
+\section{Introduction}
+%% =========================================================================
+
+This report presents a rigorous simulation-based investigation of three-phase
+synchronous generator behaviour using MATLAB R2025b and Simscape Electrical.
+The study is structured across three exercises and six tasks of increasing
+complexity.
+
+Exercise~1 analyses the dynamic response of a \MVA{555}, \kV{24}, \Hz{60}
+round-rotor generator to step load changes, establishing the governing
+relationships between active power and system frequency (described by the
+swing equation) and between reactive power and terminal voltage (governed by
+the Automatic Voltage Regulator, AVR). Exercise~2 extends the study to the
+parallel operation of two identical synchronous generators, demonstrating that
+the governor frequency setpoint determines active power sharing: an
+under-frequency machine absorbs power and operates as a synchronous motor,
+while an over-frequency machine supplies the load. The system frequency settles
+at a droop-weighted average of both setpoints. Exercise~3 replaces one
+generator with an ideal infinite bus, revealing the fundamental distinction from
+the two-machine case: the infinite bus holds frequency absolutely rigid at
+\pu{1.0}, so the oncoming generator cannot influence system frequency, and its
+power output is determined entirely by its governor setpoint relative to the
+fixed grid frequency. All results are supported by simulation plots, governing
+equation derivations, and quantitative steady-state analysis.
