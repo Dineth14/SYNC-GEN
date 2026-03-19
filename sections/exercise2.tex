@@ -8,6 +8,18 @@ $t=\SI{5}{s}$. Generator~A remains connected to the initial \MW{250} load and
 operates at its setpoint of approximately \pu{1.01}. Both generators have
 identical \MVA{555} ratings, AVRs, and governor characteristics ($R=5\%$).
 
+%% ── SYNCHRONISATION CONDITIONS ────────────────────────────────────────────
+Before paralleling two generators, four conditions must be satisfied to avoid
+damaging transient currents at breaker closure: (1)~equal voltage magnitude,
+(2)~equal frequency, (3)~matching phase sequence, and (4)~zero (or small)
+phase-angle difference across the breaker. In practice, a synchroscope or
+automatic synchroniser verifies these conditions before issuing the close
+command. In this simulation the breaker closes at a fixed time ($t=\SI{5}{s}$)
+regardless of phase-angle alignment, so the initial transients observed in the
+results partly reflect imperfect synchronisation. The two tasks below explore
+what happens when condition~(2) is deliberately violated by setting Gen~B's
+governor reference above or below Gen~A's.
+
 %% ── SIMULINK MODEL DIAGRAM ───────────────────────────────────────────────
 \subsection{Simulink Model}
 
@@ -21,7 +33,7 @@ power for comparison.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\textwidth]{EX2_figure.png}
+  \includegraphics[width=0.75\textwidth]{EX2_figure.png}
   \caption{Exercise 2 Simulink model: two identical synchronous generators
     connected in parallel through a synchronisation breaker. Independent AVR
     and governor subsystems allow setpoint variation for Tasks~3 and~4.}
@@ -38,7 +50,7 @@ at a frequency approximately 2\% below Generator~A before synchronisation.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.85\textwidth]{task3_frequency_variation.png}
+  \includegraphics[width=0.65\textwidth]{task3_frequency_variation.png}
   \caption{Task 3: Frequency variation when Generator~B is paralleled at
     $f_\text{set} = \pu{0.98}$. Breaker closes at $t = \SI{5}{s}$.}
   \label{fig:task3_freq}
@@ -77,7 +89,7 @@ a settled frequency of approximately \pu{1.008}.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.85\textwidth]{task3_active_power.png}
+  \includegraphics[width=0.65\textwidth]{task3_active_power.png}
   \caption{Task 3: Active power sharing when Generator~B is paralleled at
     $f_\text{set} = \pu{0.98}$. Gen~B absorbs power (motoring condition).}
   \label{fig:task3_active}
@@ -103,7 +115,7 @@ procedure.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.85\textwidth]{task3_voltage.png}
+  \includegraphics[width=0.65\textwidth]{task3_voltage.png}
   \caption{Task 3: Terminal voltage variation. A minor dip occurs at
     $t=\SI{5}{s}$ upon breaker closure; both AVRs restore $V_t$ to \pu{1.0}.}
   \label{fig:task3_voltage}
@@ -111,7 +123,7 @@ procedure.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.85\textwidth]{task3_reactive_power.png}
+  \includegraphics[width=0.65\textwidth]{task3_reactive_power.png}
   \caption{Task 3: Reactive power variation. Transient oscillations at
     $t=\SI{5}{s}$ settle once synchronism is established.}
   \label{fig:task3_reactive}
@@ -134,7 +146,7 @@ Generator~A's setpoint.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.85\textwidth]{task4_frequency_variation.png}
+  \includegraphics[width=0.65\textwidth]{task4_frequency_variation.png}
   \caption{Task 4: Frequency variation when Generator~B is paralleled at
     $f_\text{set} = \pu{1.02}$. Breaker closes at $t = \SI{5}{s}$.}
   \label{fig:task4_freq}
@@ -160,7 +172,7 @@ combined setpoint energy of the system.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.85\textwidth]{task4_active_power.png}
+  \includegraphics[width=0.65\textwidth]{task4_active_power.png}
   \caption{Task 4: Active power sharing when Generator~B is paralleled at
     $f_\text{set} = \pu{1.02}$. Gen~B supplies the majority of the load.}
   \label{fig:task4_active}
@@ -182,7 +194,7 @@ starkly with Task~3.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.85\textwidth]{task4_voltage.png}
+  \includegraphics[width=0.65\textwidth]{task4_voltage.png}
   \caption{Task 4: Terminal voltage variation. A transient spike occurs at
     $t=\SI{5}{s}$; AVRs restore $V_t$ to \pu{1.0}.}
   \label{fig:task4_voltage}
@@ -190,7 +202,7 @@ starkly with Task~3.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.85\textwidth]{task4_reactive_power.png}
+  \includegraphics[width=0.65\textwidth]{task4_reactive_power.png}
   \caption{Task 4: Reactive power variation after synchronisation at
     $f_\text{set} = \pu{1.02}$.}
   \label{fig:task4_reactive}
@@ -211,9 +223,3 @@ system frequency and absorbs power --- a hazardous motoring condition. In
 Task~4 ($f_{\text{set},B} = \pu{1.02}$), Generator~B operates above the
 system frequency and assumes the majority of the system load --- the desired
 operational outcome.
-
-The comparison confirms the core principle: the governor frequency setpoint is
-the \emph{sole} determinant of active power sharing in parallel operation. An
-under-frequency oncoming machine (Task~3) absorbs power --- a hazardous motoring
-condition, while an over-frequency machine (Task~4) assumes the majority of the
-system load.

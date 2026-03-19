@@ -27,7 +27,7 @@ Gen~B without any change in its terminal conditions.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\textwidth]{EX3_figure.png}
+  \includegraphics[width=0.75\textwidth]{EX3_figure.png}
   \caption{Exercise 3 Simulink model: Generator~B connected to an infinite bus
     (ideal voltage source) through a synchronisation breaker. The infinite bus
     maintains $V = \pu{1.0}$ and $f = \Hz{60}$ at all times.}
@@ -41,7 +41,7 @@ Gen~B without any change in its terminal conditions.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.85\textwidth]{task5_frequeancy.png}
+  \includegraphics[width=0.65\textwidth]{task5_frequeancy.png}
   \caption{Task 5: Frequency variation when Generator~B is paralleled with
     an infinite bus at $f_\text{set} = \pu{0.98}$. System frequency remains
     rigid at \pu{1.000}.}
@@ -57,7 +57,7 @@ characteristic of an infinite bus and the fundamental contrast with Task~3.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.85\textwidth]{task5_active_power.png}
+  \includegraphics[width=0.65\textwidth]{task5_active_power.png}
   \caption{Task 5: Active power when Generator~B is paralleled with an
     infinite bus at $f_\text{set} = \pu{0.98}$. Gen~B absorbs power
     (severe motoring condition).}
@@ -74,17 +74,20 @@ the droop equation gives:
 \end{equation}
 
 Generator~B operates as a synchronous motor, absorbing power from the infinite
-bus. This motoring condition is \textit{more severe} than Task~3 because, in
-Task~3, the system frequency settled at a compromise value ($\approx\pu{1.008}$),
-reducing the setpoint deficit from 0.030 to only 0.028\,pu. Here, the
-infinite bus maintains exactly \pu{1.0}, so the full 0.020\,pu deficit drives
-a stronger motoring condition.
+bus. Comparing with Task~3, where the system frequency settled at a compromise
+value of $\approx\pu{1.008}$ (producing a deficit of
+$1.008 - 0.98 = 0.028$\,pu), the infinite bus scenario yields a smaller
+steady-state deficit of $1.000 - 0.98 = 0.020$\,pu. Although the droop-equation
+deficit is numerically smaller, the practical consequence remains serious:
+Gen~B cannot drag the system frequency downward as it did in Task~3, so the
+motoring persists indefinitely until the operator raises the governor setpoint
+or trips the breaker.
 
 \subsubsection{Voltage and Reactive Power (Task 5)}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.85\textwidth]{task5_voltage.png}
+  \includegraphics[width=0.65\textwidth]{task5_voltage.png}
   \caption{Task 5: Terminal voltage when Generator~B is connected to an
     infinite bus at $f_\text{set} = \pu{0.98}$.}
   \label{fig:task5_voltage}
@@ -92,11 +95,22 @@ a stronger motoring condition.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.85\textwidth]{task5_reactive_power.png}
+  \includegraphics[width=0.65\textwidth]{task5_reactive_power.png}
   \caption{Task 5: Reactive power when Generator~B is connected to an
     infinite bus at $f_\text{set} = \pu{0.98}$.}
   \label{fig:task5_reactive}
 \end{figure}
+
+Upon breaker closure, the terminal voltage experiences a brief transient dip
+caused by the circulating current between Gen~B and the infinite bus. Because
+the infinite bus holds its voltage at exactly \pu{1.0}, Gen~B's AVR is the
+only regulator that needs to act; the grid-side voltage is unaffected. The AVR
+increases field excitation to restore $V_t$, which also raises the reactive
+power output of Gen~B. In steady state, Gen~B settles at a reactive power
+level determined by the difference between its internal EMF and the bus
+voltage. Compared with Task~3, where both AVRs participated in voltage
+recovery, the infinite bus case places the entire reactive power burden on
+Gen~B's excitation system.
 
 \subsubsection{Comparison with Task 3}
 
@@ -104,6 +118,7 @@ a stronger motoring condition.
 
 \begin{table}[H]
   \centering
+  \small
   \caption{Task 3 vs Task 5 -- Finite Bus vs Infinite Bus ($f_\text{set,B} = \pu{0.98}$)}
   \label{tab:t3_vs_t5}
   \begin{tabular}{>{\bfseries}p{3.2cm} p{5cm} p{5cm}}
@@ -124,9 +139,6 @@ a stronger motoring condition.
     Voltage regulation
       & Both AVRs act to restore \pu{1.0}
       & Grid holds voltage; AVR acts on Gen~B only \\[4pt]
-    Physical analogy
-      & Two rubber bands pulling each other
-      & Rubber band vs a rigid wall \\[4pt]
     Engineering implication
       & Overloads Gen~A; unstable if repeated
       & Gen~B trips on overload; must raise setpoint \\
@@ -141,7 +153,7 @@ a stronger motoring condition.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.85\textwidth]{task6_frequeancy.png}
+  \includegraphics[width=0.65\textwidth]{task6_frequeancy.png}
   \caption{Task 6: Frequency variation when Generator~B is paralleled with
     an infinite bus at $f_\text{set} = \pu{1.02}$. System frequency remains
     rigid at \pu{1.000}.}
@@ -157,7 +169,7 @@ Task~4, where Gen~A (a finite machine) was pulled upward in frequency by Gen~B.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.85\textwidth]{task6_active_power.png}
+  \includegraphics[width=0.65\textwidth]{task6_active_power.png}
   \caption{Task 6: Active power when Generator~B is paralleled with an
     infinite bus at $f_\text{set} = \pu{1.02}$. Gen~B injects power into
     the grid.}
@@ -179,7 +191,7 @@ absorbs this power effortlessly without any frequency perturbation.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.85\textwidth]{task6_voltage.png}
+  \includegraphics[width=0.65\textwidth]{task6_voltage.png}
   \caption{Task 6: Terminal voltage when Generator~B is connected to an
     infinite bus at $f_\text{set} = \pu{1.02}$.}
   \label{fig:task6_voltage}
@@ -187,11 +199,22 @@ absorbs this power effortlessly without any frequency perturbation.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.85\textwidth]{task6_reactive_power.png}
+  \includegraphics[width=0.65\textwidth]{task6_reactive_power.png}
   \caption{Task 6: Reactive power when Generator~B is connected to an
     infinite bus at $f_\text{set} = \pu{1.02}$.}
   \label{fig:task6_reactive}
 \end{figure}
+
+The voltage transient at breaker closure in Task~6 is a brief overshoot rather
+than a dip, because Gen~B's rotor was leading the infinite bus in phase angle
+at the moment of connection. The AVR damps this overshoot within one to two
+seconds. In steady state, Gen~B exports reactive power set by the difference
+between its internal EMF (driven by the AVR setpoint) and the fixed bus voltage
+of \pu{1.0}. The infinite bus absorbs any surplus reactive power without any
+voltage deviation, which contrasts with Task~4 where both generators shared the
+reactive power adjustment. This clean voltage recovery confirms that the
+AVR--exciter loop operates independently of the P--f loop, consistent with the
+decoupled control design discussed in Exercise~1.
 
 \subsubsection{Comparison with Task 4}
 
@@ -199,6 +222,7 @@ absorbs this power effortlessly without any frequency perturbation.
 
 \begin{table}[H]
   \centering
+  \small
   \caption{Task 4 vs Task 6 -- Finite Bus vs Infinite Bus ($f_\text{set,B}: \pu{1.02}$)}
   \label{tab:t4_vs_t6}
   \begin{tabular}{>{\bfseries}p{3.2cm} p{5cm} p{5cm}}
@@ -232,20 +256,56 @@ absorbs this power effortlessly without any frequency perturbation.
 %% ── GRAND COMPARISON ─────────────────────────────────────────────────────
 \subsection{Grand Comparison -- All Tasks}
 
-The grand comparison across all four parallel-operation tasks (Tasks~3--6)
-reveals how the bus type (finite vs infinite) and the governor setpoint
+The following comparison across all four parallel-operation tasks (Tasks~3--6)
+shows how the bus type (finite vs infinite) and the governor setpoint
 (under-frequency vs over-frequency) interact to determine system behaviour.
 
-Key observations:
-\begin{itemize}[leftmargin=2em]
-  \item \textbf{Finite bus (Tasks~3,~4):} System frequency settles at a
-    weighted compromise. Both generators influence the outcome.
-  \item \textbf{Infinite bus (Tasks~5,~6):} System frequency is immovable at
-    \pu{1.0}. Gen~B's power is determined entirely by its setpoint offset
-    from the grid frequency.
-  \item \textbf{Under-frequency setpoint (Tasks~3,~5):} Gen~B consistently
-    motors; the infinite bus case (Task~5) produces more severe motoring.
-  \item \textbf{Over-frequency setpoint (Tasks~4,~6):} Gen~B consistently
-    generates; the infinite bus case (Task~6) produces a clean, stable power
-    injection set by the droop equation alone.
-\end{itemize}
+Key observations are summarised in \tabref{tab:grand_comparison}.
+
+\begin{table}[H]
+  \centering
+  \small
+  \caption{Grand Comparison of Tasks 3--6}
+  \label{tab:grand_comparison}
+  \begin{tabular}{>{\bfseries}p{2.4cm} p{2.4cm} p{2.4cm} p{2.4cm} p{2.4cm}}
+    \toprule
+    \textbf{Parameter}
+      & \textbf{Task 3} (Finite, 0.98)
+      & \textbf{Task 4} (Finite, 1.02)
+      & \textbf{Task 5} (Infinite, 0.98)
+      & \textbf{Task 6} (Infinite, 1.02) \\
+    \midrule
+    System freq.\ after sync
+      & $\approx\pu{1.008}$ (compromise)
+      & $\approx\pu{1.015}$ (compromise)
+      & \pu{1.000} (rigid)
+      & \pu{1.000} (rigid) \\[4pt]
+    Gen~B active power
+      & Negative (motoring)
+      & Positive (generation)
+      & Negative (motoring)
+      & Positive (generation) \\[4pt]
+    Gen~B freq.\ influence
+      & Pulls system freq.\ down
+      & Pulls system freq.\ up
+      & None
+      & None \\[4pt]
+    Voltage regulation
+      & Both AVRs act
+      & Both AVRs act
+      & Grid holds $V$; Gen~B AVR only
+      & Grid holds $V$; Gen~B AVR only \\[4pt]
+    Engineering implication
+      & Overloads Gen~A
+      & Load transferred successfully
+      & Gen~B trips on overload
+      & Normal grid-tie operation \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+The governor setpoint relative to the system frequency determines whether a
+generator motors or generates in every scenario. The bus type (finite vs
+infinite) controls whether the oncoming machine can influence system frequency:
+a finite bus allows a droop-weighted compromise, while an infinite bus holds
+frequency immovable at \pu{1.0}.

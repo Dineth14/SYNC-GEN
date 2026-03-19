@@ -16,7 +16,7 @@ post-processing.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\textwidth]{EX1_figure.png}
+  \includegraphics[width=0.75\textwidth]{EX1_figure.png}
   \caption{Exercise 1 Simulink model: single synchronous machine with AVR,
     governor, and switched loads.}
   \label{fig:ex1_diagram}
@@ -29,14 +29,15 @@ post-processing.
 
 The synchronous machine is the central electromechanical energy conversion
 element in the model, converting mechanical power delivered at its shaft into
-balanced three-phase electrical power. The machine is a round-rotor type,
-characteristic of high-speed steam-turbine-driven generators used in large
-thermal power stations. Its mathematical model is built on the Park
+balanced three-phase electrical power. It is a round-rotor type,
+typical of high-speed steam-turbine-driven generators in large
+thermal power stations. Its mathematical model uses the Park
 (d-q~axis) transformation, which projects the three-phase (a-b-c) quantities
 onto a two-axis reference frame rotating with the rotor, eliminating
-time-varying inductances and simplifying the analysis considerably.
+time-varying inductances and simplifying the analysis.
 
-The key machine parameters are listed in \tabref{tab:machine_params}.
+The key machine parameters are listed in \tabref{tab:machine_params}
+(values taken from~\cite{ieee1110}).
 
 \begin{table}[H]
   \centering
@@ -91,12 +92,12 @@ and the AVR (Q-V).
 The Automatic Voltage Regulator (AVR) and exciter constitute a closed-loop
 feedback control subsystem maintaining the generator terminal voltage at the
 reference value ($V_\text{ref} = \pu{1.0}$). The exciter model is the
-AC1C~type, which represents an alternator-rectifier excitation system with
-field-current-based feedback.
+AC1C~type~\cite{ieee4215}, which represents an alternator-rectifier excitation
+system with field-current-based feedback.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.85\textwidth]{AVR_exiter.png}
+  \includegraphics[width=0.65\textwidth]{AVR_exiter.png}
   \caption{AVR and exciter (AC1C) block diagram showing the closed-loop
     voltage regulation subsystem.}
   \label{fig:avr_exciter}
@@ -192,7 +193,7 @@ at $t = \SI{3}{s}$ (`Step off') and a larger load connection at $t = \SI{9}{s}$
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.85\textwidth]{active_power.png}
+  \includegraphics[width=0.65\textwidth]{active_power.png}
   \caption{Active mechanical power $P_m$ variation under load switching events.
     Initial steady state: \MW{250}. At $t=\SI{3}{s}$: step down to \MW{150}.
     At $t=\SI{9}{s}$: step up to \MW{350}.}
@@ -212,8 +213,8 @@ the turbine valves wider.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.85\textwidth]{angular_velocity.png}
-  \caption{Rotor angular velocity $\omega$ (pu) variation under load switching
+  \includegraphics[width=0.65\textwidth]{angular_velocity.png}
+  \caption{Rotor angular velocity $\omega$ (rad/s) variation under load switching
     events. Since the machine has one pole pair ($p=1$), electrical frequency
     equals mechanical speed in per-unit: $f_\text{pu} = \omega_\text{pu}$.}
   \label{fig:ex1_speed}
@@ -245,7 +246,7 @@ to the \MW{200} step increase.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.85\textwidth]{terminal_voltage.png}
+  \includegraphics[width=0.65\textwidth]{terminal_voltage.png}
   \caption{Terminal voltage $V_t$ (pu) showing AVR response. Voltage nadir
     at $t=\SI{9}{s}$: approximately \pu{0.82}. AVR restores $V_t$ to
     \pu{1.0} within 3--4 seconds.}
@@ -265,7 +266,7 @@ fast AVR action in maintaining power quality during severe disturbances.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.85\textwidth]{Reacrtive_power.png}
+  \includegraphics[width=0.65\textwidth]{Reacrtive_power.png}
   \caption{Reactive power $Q_m$ (MVAr) variation. Initial steady state:
     \MVAr{15}. Large transient surge at $t=\SI{9}{s}$ corresponds to AVR
     driving increased field excitation to restore $V_t$.}
@@ -284,7 +285,7 @@ the voltage dip, injecting additional reactive power into the network per
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.85\textwidth]{angular_torque.png}
+  \includegraphics[width=0.65\textwidth]{angular_torque.png}
   \caption{Angular torque variation during load switching events.
     Torque transients at $t=\SI{3}{s}$ and $t=\SI{9}{s}$ reflect the
     mechanical--electrical power imbalance described by the swing equation.}
@@ -301,7 +302,7 @@ governor adjusts the prime mover torque to restore equilibrium in both cases.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.85\textwidth]{power_dissipated.png}
+  \includegraphics[width=0.65\textwidth]{power_dissipated.png}
   \caption{Power dissipated in the load during switching events. The step
     changes at $t=\SI{3}{s}$ and $t=\SI{9}{s}$ correspond to the load
     breaker operations.}

@@ -1,0 +1,19 @@
+%% =========================================================================
+\section{Model Limitations}
+%% =========================================================================
+
+Several simplifications in the Simscape Electrical model should be noted when
+interpreting the results. The transmission lines between the generators and the
+load bus are modelled as ideal (zero-impedance) connections, so line losses
+and voltage drops along the network are absent. The synchronisation breaker
+closes at a fixed time rather than waiting for the synchroscope null, which
+introduces transient currents that would be smaller in a real synchronisation
+procedure. Saturation effects in the machine's magnetic circuit are not
+modelled; at high excitation levels, a real generator would exhibit reduced
+flux linkage and altered transient response. Finally, the governor and turbine
+are represented by first-order transfer functions, omitting boiler dynamics,
+valve travel limits, and dead-band non-linearities present in physical
+steam-turbine plant. These simplifications are standard for a power-system
+stability study at this level, but they mean the quantitative results
+(e.g.\ exact settling times and overshoot magnitudes) should be treated as
+indicative rather than precise predictions of real-world behaviour.
