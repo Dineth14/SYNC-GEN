@@ -73,15 +73,14 @@ the droop equation gives:
   \label{eq:task5_PB}
 \end{equation}
 
-Generator~B operates as a synchronous motor, absorbing power from the infinite
-bus. Comparing with Task~3, where the system frequency settled at a compromise
-value of $\approx\pu{1.008}$ (producing a deficit of
-$1.008 - 0.98 = 0.028$\,pu), the infinite bus scenario yields a smaller
-steady-state deficit of $1.000 - 0.98 = 0.020$\,pu. Although the droop-equation
-deficit is numerically smaller, the practical consequence remains serious:
-Gen~B cannot drag the system frequency downward as it did in Task~3, so the
-motoring persists indefinitely until the operator raises the governor setpoint
-or trips the breaker.
+Gen~B acts as a synchronous motor, absorbing power from the infinite bus.
+In Task~3, the system frequency settled at a compromise of about \pu{1.008},
+giving a deficit of $1.008 - 0.98 = 0.028$\,pu. Here, the infinite bus keeps
+the frequency at exactly \pu{1.0}, so the deficit is only
+$1.000 - 0.98 = 0.020$\,pu --- numerically smaller. But the practical problem
+is still serious: Gen~B cannot pull the system frequency down like it did in
+Task~3, so the motoring condition stays until the operator either raises the
+governor setpoint or opens the breaker.
 
 \subsubsection{Voltage and Reactive Power (Task 5)}
 

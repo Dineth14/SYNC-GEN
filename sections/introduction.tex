@@ -2,24 +2,20 @@
 \section{Introduction}
 %% =========================================================================
 
-This report presents a simulation-based study of three-phase
-synchronous generator behaviour using MATLAB R2025b and Simscape Electrical.
-The study is structured across three exercises and six tasks of increasing
-complexity.
+This report covers the simulation of a three-phase synchronous generator using
+MATLAB R2025b and Simscape Electrical. There are three exercises with six
+tasks, each one building on the previous.
 
-Exercise~1 analyses the dynamic response of a \MVA{555}, \kV{24}, \Hz{60}
-round-rotor generator to step load changes, establishing the governing
-relationships between active power and system frequency (described by the
-swing equation) and between reactive power and terminal voltage (governed by
-the Automatic Voltage Regulator, AVR). Exercise~2 extends the study to the
-parallel operation of two identical synchronous generators, demonstrating that
-the governor frequency setpoint determines active power sharing: an
-under-frequency machine absorbs power and operates as a synchronous motor,
-while an over-frequency machine supplies the load. The system frequency settles
-at a droop-weighted average of both setpoints. Exercise~3 replaces one
-generator with an ideal infinite bus, revealing the fundamental distinction from
-the two-machine case: the infinite bus holds frequency absolutely rigid at
-\pu{1.0}, so the oncoming generator cannot influence system frequency, and its
-power output is determined entirely by its governor setpoint relative to the
-fixed grid frequency. All results are supported by simulation plots, governing
-equation derivations, and quantitative steady-state analysis.
+Exercise~1 looks at how a \MVA{555}, \kV{24}, \Hz{60} round-rotor generator
+responds to step load changes. It covers the relationship between active power
+and system frequency (through the swing equation) and between reactive power
+and terminal voltage (through the AVR). Exercise~2 extends this to two
+identical generators running in parallel. The governor frequency setpoint
+controls how load is shared between them --- an under-frequency machine absorbs
+power and acts as a motor, while an over-frequency machine picks up the load.
+The system frequency settles at a droop-weighted average of the two setpoints.
+Exercise~3 swaps one generator for an ideal infinite bus. The infinite bus
+holds frequency fixed at \pu{1.0}, so the oncoming generator has no effect on
+system frequency. Its power output depends only on its governor setpoint
+relative to the grid frequency. Simulation plots, equation derivations, and
+steady-state calculations support the results throughout.

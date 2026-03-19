@@ -95,8 +95,8 @@ a settled frequency of approximately \pu{1.008}.
   \label{fig:task3_active}
 \end{figure}
 
-Active power sharing is governed exclusively by the governor setpoints relative
-to the system frequency. Applying \eqnref{eq:droop_power} to Gen~B:
+Active power sharing depends on where each generator's governor setpoint sits
+relative to the system frequency. Applying \eqnref{eq:droop_power} to Gen~B:
 
 \begin{equation}
   P_B = \frac{f_{nl,B} - f_\text{sys}}{S_P}
@@ -104,12 +104,11 @@ to the system frequency. Applying \eqnref{eq:droop_power} to Gen~B:
   \label{eq:task3_PB}
 \end{equation}
 
-The negative result confirms that Generator~B absorbs active power from the
-network --- it operates as a \textbf{synchronous motor}. Generator~A must
-supply the entire connected load plus Generator~B's motoring demand. This is a
-critical practical observation: paralleling an under-frequency machine
-immediately overloads the running generator and is an unsafe synchronisation
-procedure.
+The result is negative, meaning Generator~B absorbs active power from the
+network --- it is running as a \textbf{synchronous motor}. Generator~A has to
+supply the full connected load plus whatever Gen~B is drawing. In practice,
+paralleling a machine with a lower frequency setpoint immediately puts extra
+load on the running generator and is not a safe way to synchronise.
 
 \subsubsection{Voltage and Reactive Power (Task 3)}
 

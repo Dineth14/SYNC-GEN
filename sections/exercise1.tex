@@ -27,16 +27,15 @@ post-processing.
 
 \subsubsection{Synchronous Machine}
 
-The synchronous machine is the central electromechanical energy conversion
-element in the model, converting mechanical power delivered at its shaft into
-balanced three-phase electrical power. It is a round-rotor type,
-typical of high-speed steam-turbine-driven generators in large
-thermal power stations. Its mathematical model uses the Park
-(d-q~axis) transformation, which projects the three-phase (a-b-c) quantities
-onto a two-axis reference frame rotating with the rotor, eliminating
-time-varying inductances and simplifying the analysis.
+The synchronous machine is the main component in the model. It converts
+mechanical shaft power into balanced three-phase electrical power. It is a
+round-rotor type, which is standard for high-speed steam-turbine generators in
+thermal power stations. The model uses the Park (d-q~axis) transformation to
+project the three-phase quantities onto a rotating two-axis reference frame.
+This gets rid of the time-varying inductances and makes the equations easier
+to work with.
 
-The key machine parameters are listed in \tabref{tab:machine_params}
+The machine parameters are listed in \tabref{tab:machine_params}
 (values taken from~\cite{ieee1110}).
 
 \begin{table}[H]
@@ -80,12 +79,11 @@ the synchronous machine:
 
 \noindent where $E$ is the internal EMF (pu), $V$ is the terminal voltage (pu),
 $X$ is the synchronous reactance (pu), and $\delta$ is the power angle
-(electrical degrees). Equation~\eqnref{eq:active_power} confirms that active
-power is controlled primarily through the power angle $\delta$ (via the prime
-mover), while \eqnref{eq:reactive_power} shows that reactive power is
-controlled by the internal voltage $E$ (via field excitation). This
-decoupling underpins the independent control loops of the governor (P-f)
-and the AVR (Q-V).
+(electrical degrees). From \eqnref{eq:active_power}, active power is controlled
+mainly through the power angle $\delta$, which is set by the prime mover.
+\eqnref{eq:reactive_power} shows that reactive power depends on the internal
+voltage $E$, set by field excitation. Because of this, the governor (P-f) and
+AVR (Q-V) control loops can operate independently.
 
 \subsubsection{AVR and Exciter (AC1C Model)}
 
@@ -103,9 +101,9 @@ system with field-current-based feedback.
   \label{fig:avr_exciter}
 \end{figure}
 
-The AVR senses the terminal voltage $V_t$, compares it with $V_\text{ref}$,
-and produces an error signal that drives the exciter to adjust the field
-voltage $E_\text{fd}$. The simplified transfer function is:
+The AVR measures the terminal voltage $V_t$ and compares it to $V_\text{ref}$.
+The difference produces an error signal that adjusts the field voltage
+$E_\text{fd}$ through the exciter. The simplified transfer function is:
 
 \begin{equation}
   E_\text{fd}(s) = \frac{K_A}{1 + s T_A}\left(V_\text{ref} - V_t(s)\right)
@@ -113,12 +111,12 @@ voltage $E_\text{fd}$. The simplified transfer function is:
 \end{equation}
 
 \noindent where $K_A$ is the AVR gain and $T_A$ is the AVR time constant.
-When $V_t$ falls below $V_\text{ref}$ (e.g.\ following a large load
-connection), the AVR commands a higher $E_\text{fd}$, which increases the
-machine's internal EMF~$E$. By \eqnref{eq:reactive_power}, a higher~$E$ at
-approximately constant~$\delta$ increases reactive power injection~$Q$, which
-raises the terminal voltage and restores it to the reference. This is the
-primary voltage regulation mechanism in power systems.
+If $V_t$ drops below $V_\text{ref}$ (for example after a large load is
+connected), the AVR increases $E_\text{fd}$. This raises the internal
+EMF~$E$. From \eqnref{eq:reactive_power}, a higher~$E$ at roughly
+constant~$\delta$ means more reactive power~$Q$ is injected, which pushes the
+terminal voltage back up toward the reference. This is how voltage regulation
+works in power systems.
 
 \subsubsection{Governor and Prime Mover}
 
@@ -148,8 +146,8 @@ a 5\% reduction in frequency commands a 100\% increase in rated power output.
 
 \subsubsection{Machine Inertia Block}
 
-The machine inertia block models the kinetic energy stored in the combined
-rotating mass of the generator rotor and turbine shaft, characterised by the
+The machine inertia block represents the kinetic energy stored in the rotating
+mass of the generator rotor and turbine shaft. This is characterised by the
 inertia constant $H$:
 
 \begin{equation}
@@ -158,9 +156,9 @@ inertia constant $H$:
   \label{eq:inertia_constant}
 \end{equation}
 
-\noindent For this machine, $H = 3.525$\,s, meaning the rotor stores 3.525
-seconds of rated power as kinetic energy at synchronous speed. The governing
-equation for rotor dynamics is the swing equation:
+\noindent For this machine, $H = 3.525$\,s. This means the rotor stores enough
+kinetic energy to supply rated power for 3.525 seconds at synchronous speed.
+The rotor dynamics follow the swing equation:
 
 \begin{equation}
   \frac{2H}{\omega_s}\frac{d\omega}{dt} = P_m - P_e - D(\omega - \omega_s)
@@ -170,8 +168,8 @@ equation for rotor dynamics is the swing equation:
 \noindent where $\omega$ is the rotor angular velocity (rad/s), $\omega_s$ is
 synchronous speed (rad/s), $P_m$ is the mechanical power input (pu), $P_e$ is
 the electrical power output (pu), and $D = 0.01$\,pu is the damping
-coefficient. The swing equation is the cornerstone of transient stability
-analysis. The Rate of Change of Frequency (ROCOF) immediately following a
+coefficient. The swing equation is the main tool used in transient stability
+analysis. The Rate of Change of Frequency (ROCOF) right after a
 $\SI{100}{MW}$ load change is:
 
 \begin{equation}
@@ -319,20 +317,18 @@ of the synchronous machine as it adjusts to the new operating point.
 
 \textbf{Active Power $\leftrightarrow$ Frequency:}
 The swing equation~\eqnref{eq:swing} and governor droop~\eqnref{eq:droop_power}
-couple these variables tightly. Active power surplus ($P_m > P_e$) causes rotor
-acceleration and frequency rise; deficit causes deceleration and frequency drop.
-This is confirmed by the simulation: frequency rises after the $t=\SI{3}{s}$
-load reduction and falls after the $t=\SI{9}{s}$ load addition, following the
-active power curves with a time delay governed by the machine inertia.
-This P--f coupling is the basis of primary frequency regulation in power
-systems.
+link these two variables. When mechanical power exceeds electrical power
+($P_m > P_e$), the rotor accelerates and frequency goes up. The opposite
+happens when there is a deficit. The simulation matches this --- frequency rises
+after the $t=\SI{3}{s}$ load removal and drops after the $t=\SI{9}{s}$ load
+addition, following the active power response with a delay set by the machine
+inertia. This P--f relationship is the basis of primary frequency regulation.
 
 \textbf{Reactive Power $\leftrightarrow$ Terminal Voltage:}
-Equations~\eqnref{eq:reactive_power} and \eqnref{eq:avr} couple these variables
-through the AVR. A terminal voltage drop triggers AVR excitation increase
-$\rightarrow$ higher $E$ $\rightarrow$ increased $Q$ output
-$\rightarrow$ voltage restoration. The simulation confirms this: the
-$t=\SI{9}{s}$ voltage dip is accompanied by a sharp reactive power surge as the
-AVR acts. In steady state, the Q--V loop is largely decoupled from the P--f
-loop, allowing independent voltage and frequency control --- a fundamental design
-principle of power system controllers.
+Equations~\eqnref{eq:reactive_power} and \eqnref{eq:avr} link these through
+the AVR. When terminal voltage drops, the AVR increases excitation
+$\rightarrow$ $E$ rises $\rightarrow$ $Q$ output increases
+$\rightarrow$ voltage is restored. The simulation shows this clearly: the
+$t=\SI{9}{s}$ voltage dip comes with a sharp reactive power surge as the AVR
+responds. In steady state, the Q--V loop and the P--f loop are mostly
+independent, which allows voltage and frequency to be controlled separately.
