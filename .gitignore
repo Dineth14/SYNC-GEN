@@ -1,0 +1,33 @@
+# MATLAB / Simulink
+*.asv
+*.m~
+*.mex*
+*.slxc
+slprj/
+*.autosave
+*.bak
+
+# Simscape / Simulink cache
+*.slxc
+sdi*.mat
+*.log
+
+# OS
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+
+# Submission zip (don't track the zip itself)
+E_21_291_GS_ASS.zip
+E_21_291_GS_ASS/
