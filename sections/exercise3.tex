@@ -27,7 +27,7 @@ Gen~B without any change in its terminal conditions.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\textwidth]{figures/EX3_diagram.png}
+  \includegraphics[width=\textwidth]{EX3_figure.png}
   \caption{Exercise 3 Simulink model: Generator~B connected to an infinite bus
     (ideal voltage source) through a synchronisation breaker. The infinite bus
     maintains $V = \pu{1.0}$ and $f = \Hz{60}$ at all times.}
@@ -37,17 +37,16 @@ Gen~B without any change in its terminal conditions.
 %% ── TASK 5 ────────────────────────────────────────────────────────────────
 \subsection{Task 5 -- Generator B at Lower Frequency (0.98\,pu) vs Infinite Bus}
 
+\subsubsection{Frequency (Task 5)}
+
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\textwidth]{figures/Task5_AllPlots.png}
-  \caption{Task 5: Generator~B paralleled with an infinite bus at
-    $f_\text{set} = \pu{0.98}$. System frequency is completely rigid at
-    \pu{1.000}. Panels show frequency, terminal voltage, active power, and
-    reactive power.}
-  \label{fig:task5_all}
+  \includegraphics[width=0.85\textwidth]{task5_frequeancy.png}
+  \caption{Task 5: Frequency variation when Generator~B is paralleled with
+    an infinite bus at $f_\text{set} = \pu{0.98}$. System frequency remains
+    rigid at \pu{1.000}.}
+  \label{fig:task5_freq}
 \end{figure}
-
-\subsubsection{Frequency (Task 5)}
 
 Upon breaker closure at $t=\SI{5}{s}$, the infinite bus instantaneously
 forces Gen~B's frequency to \pu{1.0}. The system frequency does not change
@@ -55,6 +54,15 @@ at all --- it remains exactly \pu{1.0} throughout. This is the defining
 characteristic of an infinite bus and the fundamental contrast with Task~3.
 
 \subsubsection{Active Power (Task 5)}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\textwidth]{task5_active_power.png}
+  \caption{Task 5: Active power when Generator~B is paralleled with an
+    infinite bus at $f_\text{set} = \pu{0.98}$. Gen~B absorbs power
+    (severe motoring condition).}
+  \label{fig:task5_active}
+\end{figure}
 
 With the grid frequency fixed at \pu{1.0} and Gen~B's setpoint at \pu{0.98},
 the droop equation gives:
@@ -71,6 +79,24 @@ Task~3, the system frequency settled at a compromise value ($\approx\pu{1.008}$)
 reducing the setpoint deficit from 0.030 to only 0.028\,pu. Here, the
 infinite bus maintains exactly \pu{1.0}, so the full 0.020\,pu deficit drives
 a stronger motoring condition.
+
+\subsubsection{Voltage and Reactive Power (Task 5)}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\textwidth]{task5_voltage.png}
+  \caption{Task 5: Terminal voltage when Generator~B is connected to an
+    infinite bus at $f_\text{set} = \pu{0.98}$.}
+  \label{fig:task5_voltage}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\textwidth]{task5_reactive_power.png}
+  \caption{Task 5: Reactive power when Generator~B is connected to an
+    infinite bus at $f_\text{set} = \pu{0.98}$.}
+  \label{fig:task5_reactive}
+\end{figure}
 
 \subsubsection{Comparison with Task 3}
 
@@ -109,39 +135,63 @@ a stronger motoring condition.
 \end{table}
 
 %% ── TASK 6 ────────────────────────────────────────────────────────────────
-\subsection{Task 6 -- Generator B at Higher Frequency (1.01\,pu) vs Infinite Bus}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=\textwidth]{figures/Task6_AllPlots.png}
-  \caption{Task 6: Generator~B paralleled with an infinite bus at
-    $f_\text{set} = \pu{1.01}$. System frequency remains rigid at \pu{1.000}.
-    Panels show frequency, terminal voltage, active power, and reactive power.}
-  \label{fig:task6_all}
-\end{figure}
+\subsection{Task 6 -- Generator B at Higher Frequency (1.02\,pu) vs Infinite Bus}
 
 \subsubsection{Frequency (Task 6)}
 
-Generator~B is spun up to \pu{1.01} before synchronisation. Upon breaker
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\textwidth]{task6_frequeancy.png}
+  \caption{Task 6: Frequency variation when Generator~B is paralleled with
+    an infinite bus at $f_\text{set} = \pu{1.02}$. System frequency remains
+    rigid at \pu{1.000}.}
+  \label{fig:task6_freq}
+\end{figure}
+
+Generator~B is spun up to \pu{1.02} before synchronisation. Upon breaker
 closure, the infinite bus immediately locks Gen~B to \pu{1.0}. The frequency
 does not rise --- it remains exactly \pu{1.0}. This is the key contrast with
-Task~4, where Gen~A (a finite machine) was pulled upward in frequency by Gen~B,
-resulting in a settled system frequency of $\approx\pu{1.023}$.
+Task~4, where Gen~A (a finite machine) was pulled upward in frequency by Gen~B.
 
 \subsubsection{Active Power (Task 6)}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\textwidth]{task6_active_power.png}
+  \caption{Task 6: Active power when Generator~B is paralleled with an
+    infinite bus at $f_\text{set} = \pu{1.02}$. Gen~B injects power into
+    the grid.}
+  \label{fig:task6_active}
+\end{figure}
 
 With Gen~B's setpoint above the infinite bus frequency:
 
 \begin{equation}
   P_B = \frac{f_\text{setpoint} - f_\text{grid}}{S_P}
-  = \frac{1.01 - 1.0}{S_P} > 0
+  = \frac{1.02 - 1.0}{S_P} > 0
   \label{eq:task6_PB}
 \end{equation}
 
 Generator~B injects positive active power into the infinite bus. The grid
-absorbs this power effortlessly without any frequency perturbation. After the
-synchronisation transient, Gen~B supplies approximately \MW{120} to the grid
-in steady state.
+absorbs this power effortlessly without any frequency perturbation.
+
+\subsubsection{Voltage and Reactive Power (Task 6)}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\textwidth]{task6_voltage.png}
+  \caption{Task 6: Terminal voltage when Generator~B is connected to an
+    infinite bus at $f_\text{set} = \pu{1.02}$.}
+  \label{fig:task6_voltage}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\textwidth]{task6_reactive_power.png}
+  \caption{Task 6: Reactive power when Generator~B is connected to an
+    infinite bus at $f_\text{set} = \pu{1.02}$.}
+  \label{fig:task6_reactive}
+\end{figure}
 
 \subsubsection{Comparison with Task 4}
 
@@ -149,7 +199,7 @@ in steady state.
 
 \begin{table}[H]
   \centering
-  \caption{Task 4 vs Task 6 -- Finite Bus vs Infinite Bus ($f_\text{set,B} = \pu{1.01}$)}
+  \caption{Task 4 vs Task 6 -- Finite Bus vs Infinite Bus ($f_\text{set,B}: \pu{1.02}$)}
   \label{tab:t4_vs_t6}
   \begin{tabular}{>{\bfseries}p{3.2cm} p{5cm} p{5cm}}
     \toprule
@@ -158,14 +208,14 @@ in steady state.
       & \textbf{Task 6 (Infinite Bus)} \\
     \midrule
     System frequency after sync
-      & $\approx\pu{1.023}$ (raised by Gen~B)
+      & Raised by Gen~B (droop-weighted average)
       & $\pu{1.000}$ exactly (cannot be raised) \\[4pt]
     Gen~A / Grid response
       & Gen~A reduces output significantly
       & Grid absorbs all Gen~B output silently \\[4pt]
     Gen~B active power
-      & $\approx\MW{150}$ (majority of load)
-      & $\approx\MW{120}$ (fixed by setpoint) \\[4pt]
+      & Majority of load (generation)
+      & Fixed by setpoint offset from grid \\[4pt]
     Voltage behaviour
       & Spike then \pu{1.0}
       & Spike then \pu{1.0} (identical mechanism) \\[4pt]
@@ -182,22 +232,11 @@ in steady state.
 %% ── GRAND COMPARISON ─────────────────────────────────────────────────────
 \subsection{Grand Comparison -- All Tasks}
 
-\figref{fig:grand_comparison} presents the grand comparison across all four
-parallel-operation tasks (Tasks~3--6), enabling simultaneous visual assessment
-of how the bus type (finite vs infinite) and the governor setpoint (under-frequency
-vs over-frequency) interact to determine system behaviour.
+The grand comparison across all four parallel-operation tasks (Tasks~3--6)
+reveals how the bus type (finite vs infinite) and the governor setpoint
+(under-frequency vs over-frequency) interact to determine system behaviour.
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=\textwidth]{figures/Grand_Comparison_AllTasks.png}
-  \caption{Grand comparison across Tasks~3--6. Rows compare finite bus (Ex~2)
-    vs infinite bus (Ex~3); columns compare under-frequency ($f_\text{set}=\pu{0.98}$)
-    vs over-frequency ($f_\text{set}=\pu{1.01}$) setpoints. The infinite bus
-    eliminates all frequency compromise and amplifies power mismatch.}
-  \label{fig:grand_comparison}
-\end{figure}
-
-Key observations from the grand comparison:
+Key observations:
 \begin{itemize}[leftmargin=2em]
   \item \textbf{Finite bus (Tasks~3,~4):} System frequency settles at a
     weighted compromise. Both generators influence the outcome.
