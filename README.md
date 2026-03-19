@@ -365,25 +365,6 @@ Contributions are welcome! Areas for improvement:
 
 ---
 
-## Citation
-
-If you use these simulations in research or coursework, please cite:
-
-**BibTeX:**
-```bibtex
-@software{EE354_SyncGen_2026,
-  author       = {{EE354 Course Team}},
-  title        = {{EE354-Synchronous-Generator-Simulations}: Complete MATLAB/Simulink Synchronous Generator Dynamics and Control},
-  year         = {2026},
-  url          = {https://github.com/university/EE354-Synchronous-Generator-Simulations},
-  note         = {MATLAB R2025b, Simscape Electrical}
-}
-```
-
-**APA:**
-> EE354 Course Team. (2026). *EE354-Synchronous-Generator-Simulations: Complete MATLAB/Simulink Synchronous Generator Dynamics and Control* [Computer software]. Retrieved from https://github.com/university/EE354-Synchronous-Generator-Simulations
-
----
 
 ## License
 
